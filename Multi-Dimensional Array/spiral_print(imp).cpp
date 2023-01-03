@@ -55,5 +55,5 @@ int main()
     };
 
     printarray(a,4,5);
-        return 0;
+    return 0;
 }
