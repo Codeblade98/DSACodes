@@ -26,6 +26,8 @@ int main()
     }
     getline(cin,s);
     words.push_back(s);
+    //we do this as the last word would not be ended by a space but by an EOL character
+
     for(string s : words)
         cout << s << endl;
     

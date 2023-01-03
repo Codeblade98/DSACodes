@@ -8,8 +8,10 @@ int main()
     int n;
     cout << "Enter the number of input strings " << endl;
     cin >> n;
+
     //important portion of the question
-    cin.get(); // if we don't do this then the enter after inputting n will be accepted as a string
+    cin.get(); // if we don't do this then on pressing enter after inputting n will be accepted as a EOL string
+    
     char a[1000];
     char b[1000];
     while(n-- > 0)

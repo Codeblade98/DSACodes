@@ -8,19 +8,27 @@ int main()
     char b[1000];
     
     //finding length of string stored : strlen function
+    //                                  ------
     cout << "Length of string a is " << strlen(a) << endl;
 
     //copying a string : strcpy function
+    //                   ------
     strcpy(b,a);
     cout << "The string b is " << b << endl;
 
-    //concatenating two strings : strcat
+    //concatenating two strings : strcat function
+    //                            ------
     strcpy(b, strcat(b,"abcde"));
     cout << "b is modified to " << b << endl;
 
-    //comparing two strings
+    //comparing two strings : strcmp function
+    //                        ------
     cout << "Comparing equal strings " << strcmp(a,a) << endl;//will always give 0
     cout << "Comparing unequal strings " << strcmp(a,b) << endl;//will give a non-zero number
+
+    //sorting the characters of a string : (process similar to sorting vectors)
+
+    
 
     //study more about working of strcmp from web
     return 0;
