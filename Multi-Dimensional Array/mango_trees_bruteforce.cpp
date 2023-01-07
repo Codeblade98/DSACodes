@@ -54,7 +54,7 @@ pair<int,int> cut_coord(char a[][100], int row, int col)
     {
         for(int j = 0; j < col; j++)
         {
-            int x = min_trees(a,i,j,row,col);
+            int x = min_trees(a,j,i,row,col);//we need to remember that i gives y coord and j give x coord
             if(x > max)
             {
                 max = x;
@@ -79,6 +79,6 @@ int main()
     };
 
     pair<int,int> pos = cut_coord(a,6,6);
-    cout << pos.first << ',' << pos.second << endl;;
+    cout << pos.first << ',' << pos.second << endl;
     return 0;
 }
