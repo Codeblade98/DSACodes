@@ -1,40 +1,62 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int sum(vector<vector<int>> v, int sr, int sc, int er, int ec){
-    // your code goes here
-    vector<vector<int>> aux(v.size());
-    for(int i = 0; i < v.size(); i++)
-    {
-        aux[i] = vector<int>(v[i].size());
-        for(int j = 0; j < v[i].size(); j++)
-        {
-            if(i > 0 && j > 0)
-                aux[i][j] =v[i][j] + aux[i - 1][j] + aux[i][j-1] - aux[i-1][j-1];
-            else if(i > 0 && j == 0)
-                aux[i][j] = v[i][j] + aux[i-1][j];
-            else if(j > 0 && i == 0)
-                aux[i][j] = v[i][j] + aux[i][j-1];
-            else
-                aux[i][j] = v[i][j];
-        }
-    }
-    int s;
-    if(sr > 0 && sc > 0)
-        s = aux[er][ec] - aux[sr - 1][ec] - aux[er][sc - 1] + aux[sr - 1][sc - 1];
+bool compare(pair<int,int>p1, pair<int,int>p2)
+{
+    int a = p1.second;
+    int b = p2.second;
+    return a < b;    
+}
 
-    else if(sr > 0 && sc == 0) 
-        s = aux[er][ec] - aux[sr][ec - 1] - aux[er - 1][sc;
-    return s;
+int defkin(int W, int H, vector<pair<int, int>> position)
+{
+    // your code goes here
+    position.push_back(make_pair(0,0));
+    position.push_back(make_pair(H,W));
+    
+    int num_of_tower = position.size();
+    vector<pair<int, int>> pos1;
+    pos1 = position;
+    sort(position.begin(), position.end());
+    sort(pos1.begin(), pos1.end(), compare);
+    
+    int penalty = 0;
+    for(int i = 0, j = 0; ;)
+    {
+        int row_diff;
+        if(i <= num_of_tower - 1)
+            row_diff = position[i + 1].first - position[i].first;
+            
+        int col_diff;
+        if(j <= num_of_tower - 1)
+            col_diff = position[j + 1].second - position[j].second;
+        int unguarded;
+        
+        if(row_diff ==0)
+            i++;
+            
+        if(col_diff == 0)
+            j++;
+            
+        if(row_diff != 0 && col_diff !=0)
+            {
+                unguarded = row_diff * col_diff;
+                penalty = max(penalty, unguarded);
+                i++;
+                j++;
+            }
+            
+        if(i >= num_of_tower - 1 && j >= num_of_tower - 1)
+            break;
+    }
+    
+    return penalty;
 }
 
 int main()
 {
-    vector<vector<int>> v = {{1, 2, 3, 4, 6},
-                    {5, 3, 8, 1, 2},
-                    {4, 6, 7, 5, 5},
-                    {2, 4, 8, 9, 4} };
-    int sr = 0, sc = 0, er = 1, ec = 1;
-    cout << sum(v,sr,sc,er,ec);
+    vector<pair<int,int>> v = {{3,8}, {11,2}, {8,6}, {0,0}, {8,15}};
+    int n = defkin(15,8,v);
+    cout << n;
     return 0;
 }
