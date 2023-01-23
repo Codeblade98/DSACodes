@@ -21,6 +21,10 @@ class Vector
             {
                 T* old_arr = arr;//store the memory location of the older arr[0] and then redeclare arr
                 max_size *= 2;
+                arr = new int(max_size);
+                
+                //we need to do like this, i.e., redclare and copy the vector again to redirect it to a new memory location
+                //we need to do this to keep the memory locations contiguous
                 for(int i = 0; i < curr_size; i++)
                 {
                     arr[i] = old_arr[i];

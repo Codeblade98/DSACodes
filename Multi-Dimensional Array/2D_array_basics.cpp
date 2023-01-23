@@ -1,5 +1,4 @@
 #include<bits/stdc++.h>
-#include<iostream>
 using namespace std;
 
 //NOTE:
@@ -20,7 +19,7 @@ int main()
     {
         for(int j = 0; j < columns; j++)
         {
-            cout << "Enter for row " << i << " and coulmn " << j << " ";
+            cout << "Enter for row " << i << " and column " << j << " ";
             cin >> arr[i][j];
         }
     }

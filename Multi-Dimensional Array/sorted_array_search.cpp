@@ -1,7 +1,7 @@
 //We need to search for an element in a 2D array sorted both row wise and column wise
 //The most brute-force algorithm might be to search one by one and find the required element
 //Then using the information about the sorting of the array we can perform row wise or column wise binary search
-//But this method would be applicable if either all rows or all columns were sorted
+//But this method would be most optimal if only one of all rows or all columns were sorted
 //Since the array is sorted both row wise and column wise we can think of a better algorithm
 
 /*

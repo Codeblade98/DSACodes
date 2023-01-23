@@ -13,7 +13,7 @@ int main()
 
     //copying a string : strcpy function
     //                   ------
-    strcpy(b,a);
+    strcpy(b,a); // for strcpy(s1,s2) means s2 ----> s1
     cout << "The string b is " << b << endl;
 
     //concatenating two strings : strcat function

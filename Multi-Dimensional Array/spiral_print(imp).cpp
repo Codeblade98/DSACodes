@@ -29,13 +29,13 @@ void printarray(int a[][100], int row, int col)
 
     for(int c = end_col - 1; c >= start_col; c--)
     {
-        if(start_row != end_row)
+        if(start_row != end_row)//important condition to avoid printing twice for some testcases
             cout << a[end_row][c] << endl;
     }
 
     for(int r = end_row - 1; r >= start_row + 1; r--)
     {
-        if(start_col != end_col)
+        if(start_col != end_col)//important condition to avoid printing twice for some testcases
             cout << a[r][start_col] << endl;
     }
     start_col++;

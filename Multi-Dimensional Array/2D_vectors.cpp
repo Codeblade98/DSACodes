@@ -8,17 +8,15 @@ int main()
     cin >> rows;
     vector<vector<int>> my_vector(rows);
 
-    int column[rows];
-    int col_index = 0;
-
     for(int i = 0; i < rows; i++)
     {
+        int col_num;
         cout << "Enter the number of columns for row " << i + 1 << " : ";
-        cin >> column[col_index];
-        my_vector[i] = vector<int>(column[col_index]);
-        for(int j = 0; j < column[col_index]; j++)
+        cin >> col_num;
+        my_vector[i] = vector<int>(col_num);
+        for(int j = 0; j < col_num; j++)
         {
-            cout << "Enter value for row " << i << " column " << column[col_index] << " : ";
+            cout << "Enter value for row " << i << " column " << col_num << " : ";
             cin >> my_vector[i][j];
         }
     }
