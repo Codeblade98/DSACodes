@@ -1,27 +1,47 @@
  #include<bits/stdc++.h>
  using namespace std;
 
-string num_str(int n)
+int binarySearch(vector<int> v, int x)
 {
-   switch(n)
-   {
-      case 1: return "one";
-      case 2: return "two";
-      case 3: return "three";
-      case 4: return "four";
-      case 5: return "five";
-      case 6: return "six";
-      case 7: return "seven";
-      case 8: return "eight";
-      case 9: return "nine";
-      case 0: return "zero";
-   }
-
-   return(num_str(n/10) + " " + num_str(n % 10));
-   
+    // your code goes here
+    int mid = v.size() / 2;
+    
+    if(v.size() == 0)
+    {
+        return -1;
+    }
+    
+    if(x == v[mid])
+    {
+        return mid;
+    }
+    
+    else if(x < v[mid])
+    {
+        vector<int> b;
+        for(int i = 0; i < mid; i ++)
+        {
+            b[i] = v[i];
+        }
+        return binarySearch(b,x);
+    }
+    
+    else if(x > v[mid])
+    {
+        vector<int> b;
+        for(int i = mid + 1; i < v.size(); i++)
+        {
+            b[i] = v[i];
+        }
+        return (mid + binarySearch(b,x));
+    }
 }
 
 int main()
 {
-   cout << num_str(204567);
+   vector<int> arr = {1, 6, 14, 25, 48, 50, 78, 96, 124};
+   int key;
+   //cout << "Enter the number to be searched ";
+   //cin >> key;
+   cout << binarySearch(arr,6);
 }
