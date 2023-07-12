@@ -1,47 +1,47 @@
  #include<bits/stdc++.h>
  using namespace std;
 
-int binarySearch(vector<int> v, int x)
-{
-    // your code goes here
-    int mid = v.size() / 2;
-    
-    if(v.size() == 0)
-    {
-        return -1;
-    }
-    
-    if(x == v[mid])
-    {
-        return mid;
-    }
-    
-    else if(x < v[mid])
-    {
-        vector<int> b;
-        for(int i = 0; i < mid; i ++)
-        {
-            b[i] = v[i];
-        }
-        return binarySearch(b,x);
-    }
-    
-    else if(x > v[mid])
-    {
-        vector<int> b;
-        for(int i = mid + 1; i < v.size(); i++)
-        {
-            b[i] = v[i];
-        }
-        return (mid + binarySearch(b,x));
-    }
-}
+ int partition(vector<int> &a, int s, int e)
+ {//returns the location of pivot in sorted array
+    int i = s - 1 ;//will move only if swapping required
+    int j = s;//will traverse through array
+    int pivot = a[e];
 
-int main()
+    while(j < e)
+    {
+        if(a[j] < pivot)
+        {
+            i++;
+            swap(a[j],a[i]);
+
+        }
+        j++;
+    }
+    swap(a[i+1],a[e]);
+    return i+1;
+ }
+
+ void quick_sort(vector<int> &a,int s, int e)
+ {
+    if(s >= e)
+        return;
+
+    int p = partition(a,s,e);
+    
+    quick_sort(a,s,p-1);
+    quick_sort(a,p+1,e);
+ }
+
+ int main()
 {
-   vector<int> arr = {1, 6, 14, 25, 48, 50, 78, 96, 124};
-   int key;
-   //cout << "Enter the number to be searched ";
-   //cin >> key;
-   cout << binarySearch(arr,6);
+    vector<int> arr{10,5,2,0,7,6,4};
+	int s = 0;
+	int e = arr.size()-1;
+  	quick_sort(arr,s,e);
+	for(int x : arr)
+	{
+		cout<< x << ",";
+	}
+	cout << endl;
+	return 0;
 }
